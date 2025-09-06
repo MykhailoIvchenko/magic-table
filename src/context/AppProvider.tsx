@@ -6,22 +6,22 @@ interface AppProviderProps {
 }
 
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
-  const [dataRowsNumber, setDataRowsNumber] = useState(0);
-  const [dataColumnsNumber, setDataColumnsNumber] = useState(0);
-  const [highlightCount, setHighlightCount] = useState(0);
+  const [tableConfig, setTableConfig] = useState({
+    dataColumnsNumber: 0,
+    dataRowsNumber: 0,
+    highlightCount: 0,
+  });
   const [tableHeaders, setTableHeaders] = useState<string[]>([]);
   const [percentiles, setPercentiles] = useState<string[]>([]);
   const [tableData, setTableData] = useState<TableData>([]);
   const [rowToHighlight, setRowToHighlight] = useState(-1);
-  const [cellsToHighlight, setCellsToHighlight] = useState<number[]>([]);
+  const [cellsToHighlight, setCellsToHighlight] = useState<
+    Record<string, boolean>
+  >({});
 
   const contextValue: IContext = {
-    dataRowsNumber,
-    setDataRowsNumber,
-    dataColumnsNumber,
-    setDataColumnsNumber,
-    highlightCount,
-    setHighlightCount,
+    tableConfig,
+    setTableConfig,
     tableHeaders,
     setTableHeaders,
     percentiles,

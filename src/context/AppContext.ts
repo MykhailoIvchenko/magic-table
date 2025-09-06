@@ -16,8 +16,10 @@ export interface IContext {
   rowToHighlight: number;
   setRowToHighlight?: React.Dispatch<React.SetStateAction<number>>;
 
-  cellsToHighlight: number[];
-  setCellsToHighlight?: React.Dispatch<React.SetStateAction<number[]>>;
+  cellsToHighlight: Record<string, boolean>;
+  setCellsToHighlight?: React.Dispatch<
+    React.SetStateAction<Record<string, boolean>>
+  >;
 }
 
 export const defaultContext: IContext = {
@@ -26,7 +28,7 @@ export const defaultContext: IContext = {
   percentiles: [],
   tableData: [],
   rowToHighlight: -1,
-  cellsToHighlight: [],
+  cellsToHighlight: {},
 };
 
 export const AppContext = createContext<IContext>(defaultContext);

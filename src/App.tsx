@@ -1,3 +1,4 @@
+import NumberInput from './components/common/numberInput/NumberInput';
 import Button from './components/ui/button/Button';
 import Input from './components/ui/input/Input';
 import Loader from './components/ui/loader/Loader';
@@ -13,6 +14,8 @@ function App() {
       <Button>Test button</Button>
 
       <Loader />
+
+      <NumberInput min={0} max={100} />
     </div>
   );
 }

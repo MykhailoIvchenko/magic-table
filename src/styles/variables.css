@@ -22,12 +22,12 @@
   --color-text-disabled: #a0a0a0;
 
   --color-default: #ffffff;
-  --color-muted: #f5f5f5;
-  --color-hover: #e8f0fe;
-  --color-selected: #d2e3fc;
+  --color-muted: #e0e0e0;
+  --color-hover: #e0ebff;
+  --color-selected: #c7dbff;
   --color-danger: #d2261a;
-  --color-disabled: #f0f0f0;
-  --color-active: #cce0ff;
+  --color-disabled: #e6e6e6;
+  --color-active: #99c2ff;
 
   --color-border: #d1d1d1;
   --color-outline-focus: #005fcc;

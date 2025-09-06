@@ -4,11 +4,12 @@ import styles from './headerCell.module.css';
 
 interface HeaderCellProps {
   text: string;
+  isFirstCol?: boolean;
 }
 
-const HeaderCell: React.FC<HeaderCellProps> = ({ text }) => {
+const HeaderCell: React.FC<HeaderCellProps> = ({ text, isFirstCol }) => {
   return (
-    <TableCell>
+    <TableCell isFirstRow isFirstCol={isFirstCol}>
       <strong className={styles.headerCell}>{text}</strong>
     </TableCell>
   );

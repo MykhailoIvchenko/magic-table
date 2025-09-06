@@ -1,5 +1,6 @@
 import NumberInput from './components/common/numberInput/NumberInput';
 import TableCell from './components/table/tableCell/TableCell';
+import TableHeader from './components/table/tableHeader/TableHeader';
 import Button from './components/ui/button/Button';
 import Input from './components/ui/input/Input';
 import Loader from './components/ui/loader/Loader';
@@ -25,6 +26,15 @@ function App() {
         {' '}
         1{' '}
       </TableCell>
+      <div style={{ marginBottom: '10px' }}></div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+        }}
+      >
+        <TableHeader columns={['One', 'Two', 'Three']} />
+      </div>
     </div>
   );
 }

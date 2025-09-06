@@ -1,0 +1,87 @@
+import React, { useState } from 'react';
+import NumberInput from '@/components/common/numberInput/NumberInput';
+import Button from '@/components/ui/button/Button';
+import { useNavigate } from 'react-router';
+import Title from '@/components/ui/title/Title';
+import styles from './tableConfig.module.css';
+
+const recalculateClosestMaxValue = (rows: number, cols: number) => {
+  return rows * cols - 1;
+};
+
+const TableConfig: React.FC = () => {
+  const [rowsNumber, setRowsNumber] = useState<number>(0);
+  const [colsNumber, setColsNumber] = useState<number>(0);
+  const [highlightCount, setHighlightCount] = useState<number>(0);
+  const [error, setError] = useState<string>('');
+
+  const navigate = useNavigate();
+
+  const highlightCountMaxValue = recalculateClosestMaxValue(
+    rowsNumber,
+    colsNumber
+  );
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (rowsNumber < 1) {
+      setError('The table should contain at least one row');
+      return;
+    }
+
+    if (colsNumber < 1) {
+      setError('The table should contain at least one column');
+      return;
+    }
+
+    if (highlightCount < 1) {
+      setError('Cells to highlight number should be a positive number');
+      return;
+    }
+
+    navigate('table');
+  };
+
+  return (
+    <section>
+      <Title>Please, config the table</Title>
+
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <NumberInput
+          label='Rows'
+          value={rowsNumber}
+          min={1}
+          max={100}
+          onChange={setRowsNumber}
+        />
+
+        <NumberInput
+          label='Columns'
+          value={colsNumber}
+          min={1}
+          max={100}
+          onChange={setColsNumber}
+        />
+
+        <NumberInput
+          label='Highlight count'
+          value={highlightCount}
+          min={1}
+          max={highlightCountMaxValue}
+          onChange={setHighlightCount}
+        />
+
+        {error && <p className={styles.formError}>{error}</p>}
+
+        <Button
+          type='submit'
+          disabled={rowsNumber < 1 || colsNumber < 1 || highlightCount < 1}
+        >
+          Generate Table
+        </Button>
+      </form>
+    </section>
+  );
+};
+
+export default TableConfig;

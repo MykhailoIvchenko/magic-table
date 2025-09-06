@@ -1,14 +1,8 @@
 import { createContext } from 'react';
 
 export interface IContext {
-  dataRowsNumber: number;
-  setDataRowsNumber?: React.Dispatch<React.SetStateAction<number>>;
-
-  dataColumnsNumber: number;
-  setDataColumnsNumber?: React.Dispatch<React.SetStateAction<number>>;
-
-  highlightCount: number;
-  setHighlightCount?: React.Dispatch<React.SetStateAction<number>>;
+  tableConfig: ITableConfig;
+  setTableConfig?: React.Dispatch<React.SetStateAction<ITableConfig>>;
 
   tableHeaders: string[];
   setTableHeaders?: React.Dispatch<React.SetStateAction<string[]>>;
@@ -27,9 +21,7 @@ export interface IContext {
 }
 
 export const defaultContext: IContext = {
-  dataRowsNumber: 0,
-  dataColumnsNumber: 0,
-  highlightCount: 0,
+  tableConfig: { dataColumnsNumber: 0, dataRowsNumber: 0, highlightCount: 0 },
   tableHeaders: [],
   percentiles: [],
   tableData: [],

@@ -1,4 +1,5 @@
 import NumberInput from './components/common/numberInput/NumberInput';
+import Table from './components/table/Table';
 import TableCell from './components/table/tableCell/TableCell';
 import TableDataRow from './components/table/tableDataRow/TableDataRow';
 import TableFooter from './components/table/tableFooter/TableFooter';
@@ -10,7 +11,7 @@ import Title from './components/ui/title/Title';
 
 function App() {
   return (
-    <div style={{ width: '250px', margin: '20px auto' }}>
+    <div style={{ width: '400px', margin: '20px auto' }}>
       <Title>Test title</Title>
 
       <Input label={'Test label'} error={'Test error'} />
@@ -29,7 +30,7 @@ function App() {
         1{' '}
       </TableCell>
       <div style={{ marginBottom: '10px' }}></div>
-      <div
+      {/* <div
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
@@ -50,8 +51,11 @@ function App() {
           isPercentDisplay
           handleIncrement={(rowIndex: number, colIndex: number) => {}}
         />
+
         <TableFooter values={[1.8, 3.4, 2.5]} />
-      </div>
+      </div> */}
+
+      <Table />
     </div>
   );
 }

@@ -1,0 +1,7 @@
+.table {
+  display: grid;
+  grid-template-columns: repeat(
+    var(--table-columns-number),
+    fit-content(100px)
+  );
+}

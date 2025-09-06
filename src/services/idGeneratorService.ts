@@ -9,7 +9,7 @@ class IdGenerator {
     return this.currentId++;
   }
 
-  public reset(start: number = 1): void {
+  public reset(start: number = 0): void {
     this.currentId = start;
   }
 

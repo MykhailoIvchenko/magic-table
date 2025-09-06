@@ -1,5 +1,5 @@
 class RandomNumberService {
-  public generateWithDigits(n: number): number {
+  public generateDigits(n: number): number {
     if (n <= 0) throw new Error('Use the positive number');
 
     const min = 10 ** (n - 1);
@@ -9,4 +9,4 @@ class RandomNumberService {
   }
 }
 
-export const randomService = new RandomNumberService();
+export const randomNumberService = new RandomNumberService();

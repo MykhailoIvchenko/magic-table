@@ -1,14 +1,14 @@
 import React from 'react';
 import HeaderCell from '@/components/table/headerCell/HeaderCell';
 interface TableHeaderProps {
-  columns: string[];
+  values: string[];
 }
 
-const TableHeader: React.FC<TableHeaderProps> = ({ columns }) => {
+const TableHeader: React.FC<TableHeaderProps> = ({ values }) => {
   return (
     <>
-      {columns.map((col, i) => (
-        <HeaderCell key={i} text={col} isFirstCol={i === 0} />
+      {values.map((val, i) => (
+        <HeaderCell key={i} text={val} isFirstCol={i === 0} />
       ))}
     </>
   );

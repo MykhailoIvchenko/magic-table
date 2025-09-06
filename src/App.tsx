@@ -1,5 +1,6 @@
 import NumberInput from './components/common/numberInput/NumberInput';
 import TableCell from './components/table/tableCell/TableCell';
+import TableFooter from './components/table/tableFooter/TableFooter';
 import TableHeader from './components/table/tableHeader/TableHeader';
 import Button from './components/ui/button/Button';
 import Input from './components/ui/input/Input';
@@ -33,7 +34,8 @@ function App() {
           gridTemplateColumns: 'repeat(3, 1fr)',
         }}
       >
-        <TableHeader columns={['One', 'Two', 'Three']} />
+        <TableHeader values={['One', 'Two', 'Three']} />
+        <TableFooter values={[1.8, 3.4, 2.5]} />
       </div>
     </div>
   );

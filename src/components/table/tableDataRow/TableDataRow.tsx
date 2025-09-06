@@ -3,12 +3,6 @@ import AggregateCell from '../aggregateCell/AggregateCell';
 import DataCell from '../dataCell/DataCell';
 import RowTitleCell from '../rowTitleCell/RowTitleCell';
 
-interface ICellData {
-  id: number;
-  amount: number;
-  percent: number;
-}
-
 interface ITableDataRowProps {
   rowIndex: number;
   title?: string;

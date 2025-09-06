@@ -1,0 +1,5 @@
+.footerCell {
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  color: var(--color-text-secondary);
+}

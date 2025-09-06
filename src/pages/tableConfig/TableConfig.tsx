@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import NumberInput from '@/components/common/numberInput/NumberInput';
 import Button from '@/components/ui/button/Button';
 import { useNavigate } from 'react-router';
 import Title from '@/components/ui/title/Title';
 import styles from './tableConfig.module.css';
+import { AppContext } from '@/context/AppContext';
+import { routerConfig } from '@/routes/config';
 
 const recalculateClosestMaxValue = (rows: number, cols: number) => {
   return rows * cols - 1;
@@ -22,6 +24,8 @@ const TableConfig: React.FC = () => {
     colsNumber
   );
 
+  const { setTableConfig } = useContext(AppContext);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (rowsNumber < 1) {
@@ -39,7 +43,15 @@ const TableConfig: React.FC = () => {
       return;
     }
 
-    navigate('table');
+    if (setTableConfig) {
+      setTableConfig({
+        dataRowsNumber: rowsNumber,
+        dataColumnsNumber: colsNumber,
+        highlightCount,
+      });
+    }
+
+    navigate(routerConfig.table.path);
   };
 
   return (

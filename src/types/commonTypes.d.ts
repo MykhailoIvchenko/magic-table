@@ -10,4 +10,10 @@ interface ITableConfig {
   highlightCount: number;
 }
 
-type TableData = Array<Array<ICellData>>;
+interface ITableDataRow {
+  title: string;
+  data: ICellData[];
+  sum: number;
+}
+
+type TableData = Array<ITableDataRow>;

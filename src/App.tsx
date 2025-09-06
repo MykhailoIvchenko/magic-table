@@ -1,4 +1,5 @@
 import NumberInput from './components/common/numberInput/NumberInput';
+import TableCell from './components/table/tableCell/TableCell';
 import Button from './components/ui/button/Button';
 import Input from './components/ui/input/Input';
 import Loader from './components/ui/loader/Loader';
@@ -16,6 +17,14 @@ function App() {
       <Loader />
 
       <NumberInput min={0} max={100} />
+      <div style={{ marginBottom: '10px' }}></div>
+
+      <TableCell> 1 </TableCell>
+      <div style={{ marginBottom: '10px' }}></div>
+      <TableCell isFirstRow isFirstCol>
+        {' '}
+        1{' '}
+      </TableCell>
     </div>
   );
 }

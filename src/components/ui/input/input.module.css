@@ -5,7 +5,7 @@
 }
 
 .inputLabel {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
 }
@@ -17,7 +17,7 @@
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   color: var(--color-text-primary);
-  background-color: var(--color-bg-default);
+  background-color: var(--color-default);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   outline: none;
@@ -30,12 +30,12 @@
 }
 
 .input:disabled {
-  background-color: var(--color-bg-disabled);
+  background-color: var(--color-disabled);
   color: var(--color-text-disabled);
   cursor: not-allowed;
 }
 
 .inputError {
-  font-size: var(--font-size-sm);
-  color: var(--color-bg-danger);
+  font-size: var(--font-size-md);
+  color: var(--color-danger);
 }

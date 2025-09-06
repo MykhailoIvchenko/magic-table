@@ -1,0 +1,54 @@
+/* variables.css */
+:root {
+  /* ====== Fonts ====== */
+  --font-family-base: 'Inter', Arial, sans-serif;
+  --font-family-mono: 'Roboto Mono', monospace;
+
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* ====== Colors ====== */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4d4d4d;
+  --color-text-accent: #005fcc;
+  --color-text-inverse: #ffffff;
+  --color-text-disabled: #a0a0a0;
+
+  --color-bg-default: #ffffff;
+  --color-bg-muted: #f5f5f5;
+  --color-bg-hover: #e8f0fe;
+  --color-bg-selected: #d2e3fc;
+  --color-bg-danger: #ffe2e0;
+  --color-bg-disabled: #f0f0f0;
+  --color-bg-active: #cce0ff;
+
+  --color-border: #d1d1d1;
+  --color-outline-focus: #005fcc;
+
+  /* ====== Heatmap scale ====== */
+  --color-heatmap-1: #e6f4ea; /* 0–20% */
+  --color-heatmap-2: #c8e6c9; /* 20–40% */
+  --color-heatmap-3: #81c784; /* 40–60% */
+  --color-heatmap-4: #4caf50; /* 60–80% */
+  --color-heatmap-5: #1b5e20; /* 80–100% */
+
+  /* ====== Spacing & radius ====== */
+  --gap-xs: 4px;
+  --gap-standard: 10px;
+  --gap-lg: 16px;
+
+  --radius-sm: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* ====== Shadows ====== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

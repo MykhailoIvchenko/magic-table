@@ -1,3 +1,4 @@
+import { PERCENTILE_LIMIT } from '@/utils/consts';
 import { idGeneratorService } from './idGeneratorService';
 import { randomNumberService } from './randomNumberService';
 import { statisticService } from './statisticService';
@@ -17,7 +18,7 @@ class Table {
     this.tableData = [];
     this.rowsMaxValues = {};
     this.rowsSums = {};
-    this.percentileLimit = 60;
+    this.percentileLimit = PERCENTILE_LIMIT;
     this.colsNumber = 0;
   }
 

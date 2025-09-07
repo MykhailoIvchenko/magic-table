@@ -176,8 +176,8 @@ class Table {
 
       const currentRow = this.tableData[rowIndex];
 
-      currentRow.forEach(
-        (_, curCol) => this.resetCellPercent(rowIndex, curCol) //TODO: Make a method that accepts a cell
+      currentRow.forEach((_, curCol) =>
+        this.resetCellPercent(rowIndex, curCol)
       );
     } else {
       this.resetCellPercent(rowIndex, colIndex);
@@ -192,9 +192,7 @@ class Table {
 
       this.tableData.push(row);
 
-      row.forEach(
-        (_, curCol) => this.resetCellPercent(i, curCol) //TODO: Make a method that accepts a cell
-      );
+      row.forEach((_, curCol) => this.resetCellPercent(i, curCol));
     }
 
     this.resetPercentilesRow();

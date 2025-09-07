@@ -3,6 +3,7 @@ import styles from './tableData.module.css';
 import Title from '@/components/ui/title/Title';
 import useGenerateTable from '@/hooks/useGenerateTable';
 import Loader from '@/components/ui/loader/Loader';
+import { Suspense } from 'react';
 
 const TableData: React.FC = () => {
   const { isLoading } = useGenerateTable();
@@ -12,7 +13,10 @@ const TableData: React.FC = () => {
       <Title>Table Data</Title>
 
       <div className={styles.tableContainer}>
-        {isLoading ? <Loader /> : <Table />}
+        <Suspense fallback={<Loader />}>
+          <Table />
+        </Suspense>
+        {/* {isLoading ? <Loader /> : <Table />} */}
       </div>
     </section>
   );

@@ -21,6 +21,10 @@
   opacity: 0.6;
 }
 
+.button:active {
+  transform: scale(0.95);
+}
+
 /* variants */
 .primary {
   background-color: var(--color-active);

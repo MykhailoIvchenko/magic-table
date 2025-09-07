@@ -27,6 +27,8 @@ class Table {
 
     if (!this.rowsMaxValues[rowIndex]) {
       this.rowsMaxValues[rowIndex] = value;
+    } else if (value > this.rowsMaxValues[rowIndex]) {
+      this.rowsMaxValues[rowIndex] = value;
     }
 
     const percent = this.calculateCellPercent(rowIndex, value);
@@ -108,7 +110,7 @@ class Table {
       this.percentileLimit
     );
 
-    return percentile;
+    return Number(percentile.toFixed(2));
   }
 
   public calculatePercentilesRow() {
@@ -185,6 +187,10 @@ class Table {
       const row = this.createRow(i);
 
       this.tableData.push(row);
+
+      row.forEach(
+        (_, curCol) => this.resetCellPercent(i, curCol) //TODO: Make a method that accepts a cell
+      );
     }
 
     this.resetPercentilesRow();

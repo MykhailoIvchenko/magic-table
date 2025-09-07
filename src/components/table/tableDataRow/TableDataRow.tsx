@@ -9,8 +9,11 @@ interface ITableDataRowProps {
   dataCells: ICellData[];
   isPercentDisplay?: boolean;
   rowSum: number;
+  cellsToHighlight: Record<string, boolean>;
   onHoverRow?: (rowIndex: number) => void;
   onDeleteRow?: (rowIndex: number) => void;
+  handleCellHover: (rowIndex: number, colIndex: number) => void;
+  handleCellLeave: VoidFunction;
   handleIncrement: (rowIndex: number, colIndex: number) => void;
 }
 
@@ -20,8 +23,11 @@ const TableDataRow: React.FC<ITableDataRowProps> = ({
   dataCells,
   isPercentDisplay = false,
   rowSum,
+  cellsToHighlight,
   onHoverRow,
   onDeleteRow,
+  handleCellHover,
+  handleCellLeave,
   handleIncrement,
 }) => {
   const onIncrement = useCallback((rowIndex: number, colIndex: number) => {
@@ -42,6 +48,9 @@ const TableDataRow: React.FC<ITableDataRowProps> = ({
           colIndex={colIndex}
           onIncrement={onIncrement}
           isFirstCol={typeof title !== 'string'}
+          onHoverCell={handleCellHover}
+          onLeaveCell={handleCellLeave}
+          isClosest={cell.id in cellsToHighlight}
         />
       ))}
 

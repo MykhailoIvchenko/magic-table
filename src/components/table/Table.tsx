@@ -6,11 +6,17 @@ import TableHeader from './tableHeader/TableHeader';
 import useTable from '@/hooks/useTable';
 
 const Table: React.FC = () => {
-  const { rowToHighlight, tableConfig, tableData, tableHeaders, percentiles } =
-    useTable();
-  console.log('TABLE DATA ', tableData);
-  console.log('TABLE HEADERS ', tableHeaders);
-  console.log('PERCENTILES ', percentiles);
+  const {
+    rowToHighlight,
+    tableConfig,
+    tableData,
+    tableHeaders,
+    percentiles,
+    handleAggregateCellHover,
+    handleDataCellHover,
+    handleDataCellLeave,
+    cellsToHighlight,
+  } = useTable();
 
   useEffect(() => {
     if (tableConfig?.dataColumnsNumber != null) {
@@ -34,6 +40,10 @@ const Table: React.FC = () => {
           rowSum={row.sum}
           isPercentDisplay={rowToHighlight === rowIndex}
           handleIncrement={(rowIndex: number, colIndex: number) => {}}
+          handleCellHover={handleDataCellHover}
+          handleCellLeave={handleDataCellLeave}
+          cellsToHighlight={cellsToHighlight}
+          onHoverRow={handleAggregateCellHover}
         />
       ))}
 

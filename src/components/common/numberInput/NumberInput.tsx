@@ -11,6 +11,8 @@ interface INumberInputProps
   min?: number;
   max?: number;
   value?: number;
+  isRow?: boolean;
+  inputClassName?: string;
   onChange?: (value: number) => void;
 }
 
@@ -20,6 +22,8 @@ const NumberInput: React.FC<INumberInputProps> = ({
   min,
   max,
   value,
+  isRow,
+  inputClassName,
   onChange,
   ...rest
 }) => {
@@ -47,6 +51,8 @@ const NumberInput: React.FC<INumberInputProps> = ({
       type='number'
       value={value ?? ''}
       onChange={handleChange}
+      isRow={isRow}
+      inputClassName={inputClassName}
       {...rest}
     />
   );

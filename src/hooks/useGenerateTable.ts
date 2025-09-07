@@ -1,4 +1,5 @@
 import { AppContext } from '@/context/AppContext';
+import { tableService } from '@/services/tableService';
 import { useContext, useEffect, useState } from 'react';
 
 function useGenerateTable() {
@@ -8,30 +9,33 @@ function useGenerateTable() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const generateTable = (rows: number, cols: number) => {
-    const headers = []; //TODO: Get from the service
-    const percentiles = []; //TODO: Get from the service
-    const tableRowsData = [[]]; //TODO: Get from the service
-
     setIsLoading(true);
+    tableService.generateTable(rows, cols);
 
     if (setTableHeaders) {
-      setTableHeaders(headers);
+      setTableHeaders(tableService.tableHeaders);
     }
 
     if (setPercentiles) {
-      setPercentiles(percentiles);
+      setPercentiles(tableService.percentiles);
     }
 
+    const tableData = tableService.converRowsToTableData();
+
     if (setTableData) {
-      setTableData(tableRowsData);
+      setTableData(tableData);
     }
 
     setIsLoading(false);
   };
 
   useEffect(() => {
-    generateTable(tableConfig.dataRowsNumber, tableConfig.dataColumnsNumber);
+    if (tableConfig.dataColumnsNumber) {
+      generateTable(tableConfig.dataRowsNumber, tableConfig.dataColumnsNumber);
+    }
   }, []);
+
+  return { isLoading };
 }
 
 export default useGenerateTable;

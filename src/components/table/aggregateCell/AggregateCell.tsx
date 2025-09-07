@@ -17,11 +17,12 @@ const AggregateCell: React.FC<AggregateCellProps> = ({
   onDeleteRow,
 }) => {
   return (
-    <TableCell
-      onMouseEnter={() => onHoverRow?.(rowIndex)}
-      onMouseLeave={() => onHoverRow?.(-1)}
-    >
-      <div className={styles.aggregateCell}>
+    <TableCell>
+      <div
+        className={styles.aggregateCell}
+        onMouseEnter={() => onHoverRow?.(rowIndex)}
+        onMouseLeave={() => onHoverRow?.(-1)}
+      >
         <span>{value}</span>
         {onDeleteRow && (
           <button

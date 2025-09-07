@@ -14,6 +14,7 @@ const Button: React.FC<IButtonProps> = ({
   ...rest
 }) => {
   const classes = `${styles.button} ${styles[variant]} ${styles[size]} ${className}`;
+
   return (
     <button className={classes} {...rest}>
       {children}

@@ -8,7 +8,7 @@ interface IRowTitleCellProps {
 const RowTitleCell: React.FC<IRowTitleCellProps> = ({ text }) => {
   return (
     <TableCell isFirstCol>
-      <strong className={styles.headerCell}>{text}</strong>
+      <strong className={styles.rowTitleCell}>{text}</strong>
     </TableCell>
   );
 };

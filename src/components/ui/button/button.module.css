@@ -4,21 +4,25 @@
   font-weight: var(--font-weight-medium);
   border: none;
   border-radius: var(--radius-sm);
-  padding: 0.5em 1em;
+  padding: var(--gap-standard);
   cursor: pointer;
   transition: all 0.2s ease;
   background-color: var(--color-default);
   color: var(--color-text-primary);
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .button:hover:not(:disabled) {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+.button:active {
+  transform: scale(0.95);
 }
 
 /* variants */
@@ -49,16 +53,16 @@
 
 /* sizes */
 .sm {
-  font-size: 0.8rem;
-  padding: 0.25em 0.5em;
+  font-size: var(--font-size-sm);
+  padding: var(--gap-xs);
 }
 
 .md {
-  font-size: 1rem;
-  padding: 0.5em 1em;
+  font-size: var(--font-size-md);
+  padding: var(--gap-standard);
 }
 
 .lg {
-  font-size: 1.2rem;
-  padding: 0.75em 1.5em;
+  font-size: var(--font-size-lg);
+  padding: var(--gap-lg);
 }

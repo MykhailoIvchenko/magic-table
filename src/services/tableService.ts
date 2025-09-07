@@ -3,7 +3,7 @@ import { randomNumberService } from './randomNumberService';
 import { statisticService } from './statisticService';
 
 class Table {
-  // public tableHeaders: Array<string>;
+  public tableHeaders: Array<string>;
   public percentiles: Array<number>;
   public tableData: Array<Array<ICellData>>;
   public rowsMaxValues: Record<number, number>;
@@ -12,7 +12,7 @@ class Table {
   public colsNumber: number;
 
   constructor() {
-    // this.tableHeaders = [];
+    this.tableHeaders = [];
     this.percentiles = [];
     this.tableData = [];
     this.rowsMaxValues = {};
@@ -26,6 +26,8 @@ class Table {
     const value = randomNumberService.generateDigits(3);
 
     if (!this.rowsMaxValues[rowIndex]) {
+      this.rowsMaxValues[rowIndex] = value;
+    } else if (value > this.rowsMaxValues[rowIndex]) {
       this.rowsMaxValues[rowIndex] = value;
     }
 
@@ -108,7 +110,7 @@ class Table {
       this.percentileLimit
     );
 
-    return percentile;
+    return Number(percentile.toFixed(2));
   }
 
   public calculatePercentilesRow() {
@@ -185,9 +187,21 @@ class Table {
       const row = this.createRow(i);
 
       this.tableData.push(row);
+
+      row.forEach(
+        (_, curCol) => this.resetCellPercent(i, curCol) //TODO: Make a method that accepts a cell
+      );
     }
 
     this.resetPercentilesRow();
+
+    this.tableHeaders = [''];
+
+    for (let i = 1; i <= cols; i++) {
+      this.tableHeaders.push(`Col${i}`);
+    }
+
+    this.tableHeaders.push('Sum');
   }
 
   public getNearestByValue(
@@ -226,6 +240,16 @@ class Table {
     }
 
     return nearestCellsIds;
+  }
+
+  public converRowsToTableData() {
+    const tableData = tableService.tableData.map((rowData, rowIndex) => ({
+      title: `Row${rowIndex + 1}`,
+      data: rowData,
+      sum: tableService.rowsSums[rowIndex],
+    }));
+
+    return tableData;
   }
 }
 

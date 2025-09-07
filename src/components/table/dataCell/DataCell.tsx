@@ -1,7 +1,7 @@
 import React from 'react';
 import TableCell from '@/components/table/tableCell/TableCell';
 import Button from '@/components/ui/button/Button';
-import styles from './DataCell.module.css';
+import styles from './dataCell.module.css';
 
 interface DataCellProps {
   value: number;
@@ -12,7 +12,8 @@ interface DataCellProps {
   isClosest?: boolean;
   isFirstCol?: boolean;
   onIncrement?: (rowIndex: number, colIndex: number) => void;
-  onHoverRow?: (rowIndex: number) => void;
+  onHoverCell?: (rowIndex: number, colIndex: number) => void;
+  onLeaveCell?: VoidFunction;
   onRemoveRow?: (rowIndex: number) => void;
 }
 
@@ -25,7 +26,8 @@ const DataCell: React.FC<DataCellProps> = ({
   isFirstCol = false,
   isPercentDisplay,
   onIncrement,
-  onHoverRow,
+  onHoverCell,
+  onLeaveCell,
 }) => {
   let heatmapClass = '';
 
@@ -53,7 +55,7 @@ const DataCell: React.FC<DataCellProps> = ({
   };
 
   const handleMouseEnter = () => {
-    onHoverRow?.(rowIndex);
+    onHoverCell?.(rowIndex, colIndex);
   };
 
   const cellClasses = [
@@ -66,7 +68,11 @@ const DataCell: React.FC<DataCellProps> = ({
 
   return (
     <TableCell isFirstCol={isFirstCol}>
-      <div className={cellClasses} onMouseEnter={handleMouseEnter}>
+      <div
+        className={cellClasses}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={onLeaveCell}
+      >
         {isPercentDisplay ? (
           <>{percent}%</>
         ) : (
@@ -75,6 +81,7 @@ const DataCell: React.FC<DataCellProps> = ({
             className={styles.numberButton}
             onClick={handleIncrement}
             title='Click to increment'
+            size={'sm'}
           >
             {value}
           </Button>

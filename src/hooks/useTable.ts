@@ -1,8 +1,11 @@
 import { AppContext } from '@/context/AppContext';
+import { tableService } from '@/services/tableService';
 import { useCallback, useContext } from 'react';
 
 function useTable() {
   const {
+    cellsToHighlight,
+    rowToHighlight,
     tableConfig,
     tableHeaders,
     percentiles,
@@ -13,18 +16,23 @@ function useTable() {
     setRowToHighlight,
   } = useContext(AppContext);
 
+  const updateData = () => {
+    if (setTableData) {
+      const tableData = tableService.converRowsToTableData();
+
+      setTableData(tableData);
+    }
+
+    if (setPercentiles) {
+      setPercentiles(tableService.percentiles);
+    }
+  };
+
   const incrementCellValue = useCallback(
     (rowIndex: number, colIndex: number) => {
-      const updatedTableData = []; //TODO: Get it from the service
-      const updatedPercentiles = [[]]; //TODO: Get it from the service
+      tableService.incrementCellValue(rowIndex, colIndex);
 
-      if (setTableData) {
-        setTableData(updatedTableData);
-      }
-
-      if (setPercentiles) {
-        setPercentiles(updatedPercentiles);
-      }
+      updateData();
     },
     []
   );
@@ -33,7 +41,11 @@ function useTable() {
     (rowIndex: number, colIndex: number) => {
       const { highlightCount } = tableConfig;
 
-      const closestCellsByValue = {}; //TODO: Get it from service
+      const closestCellsByValue = tableService.getNearestByValue(
+        rowIndex,
+        colIndex,
+        highlightCount
+      );
 
       if (setCellsToHighlight) {
         setCellsToHighlight(closestCellsByValue);
@@ -42,6 +54,12 @@ function useTable() {
     []
   );
 
+  const handleDataCellLeave = useCallback(() => {
+    if (setCellsToHighlight) {
+      setCellsToHighlight({});
+    }
+  }, []);
+
   const handleAggregateCellHover = useCallback((rowIndex: number) => {
     if (setRowToHighlight) {
       setRowToHighlight(rowIndex);
@@ -49,40 +67,30 @@ function useTable() {
   }, []);
 
   const handleDeleteRow = useCallback((rowIndex: number) => {
-    const updatedTableData = []; //TODO: Get it from the service
-    const updatedPercentiles = [[]]; //TODO: Get it from the service
+    tableService.deleteRow(rowIndex);
 
-    if (setTableData) {
-      setTableData(updatedTableData);
-    }
-
-    if (setPercentiles) {
-      setPercentiles(updatedPercentiles);
-    }
+    updateData();
   }, []);
 
   const handleAddRow = useCallback(() => {
-    const updatedTableData = []; //TODO: Get it from the service
-    const updatedPercentiles = [[]]; //TODO: Get it from the service
+    tableService.addRow();
 
-    if (setTableData) {
-      setTableData(updatedTableData);
-    }
-
-    if (setPercentiles) {
-      setPercentiles(updatedPercentiles);
-    }
+    updateData();
   }, []);
 
   return {
+    cellsToHighlight,
+    tableConfig,
     tableHeaders,
     tableData,
     percentiles,
+    rowToHighlight,
     incrementCellValue,
     handleDataCellHover,
     handleAggregateCellHover,
     handleDeleteRow,
     handleAddRow,
+    handleDataCellLeave,
   };
 }
 

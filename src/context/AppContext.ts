@@ -7,8 +7,8 @@ export interface IContext {
   tableHeaders: string[];
   setTableHeaders?: React.Dispatch<React.SetStateAction<string[]>>;
 
-  percentiles: string[];
-  setPercentiles?: React.Dispatch<React.SetStateAction<string[]>>;
+  percentiles: number[];
+  setPercentiles?: React.Dispatch<React.SetStateAction<number[]>>;
 
   tableData: TableData;
   setTableData?: React.Dispatch<React.SetStateAction<TableData>>;

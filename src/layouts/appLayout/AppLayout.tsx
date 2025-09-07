@@ -1,11 +1,14 @@
 import { Outlet } from 'react-router';
 import styles from './appLayout.module.css';
+import { AppProvider } from '@/context/AppProvider';
 
 const AppLayout: React.FC = () => {
   return (
-    <main className={styles.layout}>
-      <Outlet />
-    </main>
+    <AppProvider>
+      <main className={styles.layout}>
+        <Outlet />
+      </main>
+    </AppProvider>
   );
 };
 

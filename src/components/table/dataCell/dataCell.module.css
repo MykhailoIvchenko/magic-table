@@ -18,9 +18,8 @@
   cursor: default;
 }
 
-.closest {
-  outline: 2px solid var(--color-active);
-  outline-offset: -2px;
+.closestCell {
+  background-color: var(--color-active);
 }
 
 .heatmap1 {

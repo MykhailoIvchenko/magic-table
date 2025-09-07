@@ -6,9 +6,14 @@ import AddRowCell from '../addRowCell/AddRowCell';
 interface TableFooterProps {
   title?: string;
   values: (string | number)[];
+  onAddRow?: VoidFunction;
 }
 
-const TableFooter: React.FC<TableFooterProps> = ({ title, values }) => {
+const TableFooter: React.FC<TableFooterProps> = ({
+  title,
+  values,
+  onAddRow,
+}) => {
   return (
     <>
       {typeof title === 'string' && <RowTitleCell text={title} />}
@@ -21,7 +26,7 @@ const TableFooter: React.FC<TableFooterProps> = ({ title, values }) => {
         />
       ))}
 
-      <AddRowCell />
+      <AddRowCell onAddRow={onAddRow} />
     </>
   );
 };

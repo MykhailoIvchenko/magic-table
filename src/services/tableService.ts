@@ -241,6 +241,16 @@ class Table {
 
     return nearestCellsIds;
   }
+
+  public converRowsToTableData() {
+    const tableData = tableService.tableData.map((rowData, rowIndex) => ({
+      title: `Row${rowIndex + 1}`,
+      data: rowData,
+      sum: tableService.rowsSums[rowIndex],
+    }));
+
+    return tableData;
+  }
 }
 
 export const tableService = new Table();

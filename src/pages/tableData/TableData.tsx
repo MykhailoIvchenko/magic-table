@@ -6,7 +6,7 @@ import Loader from '@/components/ui/loader/Loader';
 import { Suspense } from 'react';
 
 const TableData: React.FC = () => {
-  const { isLoading } = useGenerateTable();
+  useGenerateTable();
 
   return (
     <section className={styles.container}>
@@ -16,7 +16,6 @@ const TableData: React.FC = () => {
         <Suspense fallback={<Loader />}>
           <Table />
         </Suspense>
-        {/* {isLoading ? <Loader /> : <Table />} */}
       </div>
     </section>
   );

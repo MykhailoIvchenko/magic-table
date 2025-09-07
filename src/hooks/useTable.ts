@@ -16,18 +16,23 @@ function useTable() {
     setRowToHighlight,
   } = useContext(AppContext);
 
+  const updateData = () => {
+    if (setTableData) {
+      const tableData = tableService.converRowsToTableData();
+
+      setTableData(tableData);
+    }
+
+    if (setPercentiles) {
+      setPercentiles(tableService.percentiles);
+    }
+  };
+
   const incrementCellValue = useCallback(
     (rowIndex: number, colIndex: number) => {
-      const updatedTableData = []; //TODO: Get it from the service
-      const updatedPercentiles = [[]]; //TODO: Get it from the service
+      tableService.incrementCellValue(rowIndex, colIndex);
 
-      if (setTableData) {
-        setTableData(updatedTableData);
-      }
-
-      if (setPercentiles) {
-        setPercentiles(updatedPercentiles);
-      }
+      updateData();
     },
     []
   );
@@ -64,31 +69,13 @@ function useTable() {
   const handleDeleteRow = useCallback((rowIndex: number) => {
     tableService.deleteRow(rowIndex);
 
-    if (setTableData) {
-      const tableData = tableService.tableData.map((rowData, rowIndex) => ({
-        title: `Row${rowIndex + 1}`,
-        data: rowData,
-        sum: tableService.rowsSums[rowIndex],
-      }));
-      setTableData(tableData);
-    }
-
-    if (setPercentiles) {
-      setPercentiles(tableService.percentiles);
-    }
+    updateData();
   }, []);
 
   const handleAddRow = useCallback(() => {
-    const updatedTableData = []; //TODO: Get it from the service
-    const updatedPercentiles = [[]]; //TODO: Get it from the service
+    tableService.addRow();
 
-    if (setTableData) {
-      setTableData(updatedTableData);
-    }
-
-    if (setPercentiles) {
-      setPercentiles(updatedPercentiles);
-    }
+    updateData();
   }, []);
 
   return {

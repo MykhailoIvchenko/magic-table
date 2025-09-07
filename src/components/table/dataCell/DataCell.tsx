@@ -81,6 +81,7 @@ const DataCell: React.FC<DataCellProps> = ({
             className={styles.numberButton}
             onClick={handleIncrement}
             title='Click to increment'
+            size={'sm'}
           >
             {value}
           </Button>

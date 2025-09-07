@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import AggregateCell from '../aggregateCell/AggregateCell';
 import DataCell from '../dataCell/DataCell';
 import RowTitleCell from '../rowTitleCell/RowTitleCell';
@@ -30,10 +29,6 @@ const TableDataRow: React.FC<ITableDataRowProps> = ({
   handleCellLeave,
   handleIncrement,
 }) => {
-  const onIncrement = useCallback((rowIndex: number, colIndex: number) => {
-    handleIncrement(rowIndex, colIndex);
-  }, []);
-
   return (
     <>
       {typeof title === 'string' && <RowTitleCell text={title} />}
@@ -46,7 +41,7 @@ const TableDataRow: React.FC<ITableDataRowProps> = ({
           percent={cell.percent}
           rowIndex={rowIndex}
           colIndex={colIndex}
-          onIncrement={onIncrement}
+          onIncrement={handleIncrement}
           isFirstCol={typeof title !== 'string'}
           onHoverCell={handleCellHover}
           onLeaveCell={handleCellLeave}

@@ -3,13 +3,9 @@ import NumberInput from '@/components/common/numberInput/NumberInput';
 import Button from '@/components/ui/button/Button';
 import { useNavigate } from 'react-router';
 import Title from '@/components/ui/title/Title';
-import styles from './tableConfig.module.css';
 import { AppContext } from '@/context/AppContext';
 import { routerConfig } from '@/routes/config';
-
-const recalculateClosestMaxValue = (rows: number, cols: number) => {
-  return rows * cols - 1;
-};
+import styles from './tableConfig.module.css';
 
 const TableConfig: React.FC = () => {
   const [rowsNumber, setRowsNumber] = useState<number>(0);
@@ -19,10 +15,7 @@ const TableConfig: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const highlightCountMaxValue = recalculateClosestMaxValue(
-    rowsNumber,
-    colsNumber
-  );
+  const highlightCountMaxValue = colsNumber - 1;
 
   const { setTableConfig } = useContext(AppContext);
 
@@ -44,7 +37,6 @@ const TableConfig: React.FC = () => {
     }
 
     if (setTableConfig) {
-      console.log('SET ', rowsNumber, colsNumber, highlightCount)
       setTableConfig({
         dataRowsNumber: rowsNumber,
         dataColumnsNumber: colsNumber,
@@ -55,8 +47,16 @@ const TableConfig: React.FC = () => {
     navigate(routerConfig.table.path);
   };
 
+  const handleChangeColsNumber = (newValue: number) => {
+    setColsNumber(newValue);
+
+    if (newValue < colsNumber && highlightCount > newValue - 1) {
+      setHighlightCount(newValue - 1);
+    }
+  };
+
   return (
-    <section>
+    <section className={styles.wrapper}>
       <Title>Please, config the table</Title>
 
       <form onSubmit={handleSubmit} className={styles.form}>
@@ -66,6 +66,8 @@ const TableConfig: React.FC = () => {
           min={1}
           max={100}
           onChange={setRowsNumber}
+          isRow
+          inputClassName={styles.numInput}
         />
 
         <NumberInput
@@ -73,7 +75,9 @@ const TableConfig: React.FC = () => {
           value={colsNumber}
           min={1}
           max={100}
-          onChange={setColsNumber}
+          onChange={handleChangeColsNumber}
+          isRow
+          inputClassName={styles.numInput}
         />
 
         <NumberInput
@@ -82,6 +86,8 @@ const TableConfig: React.FC = () => {
           min={1}
           max={highlightCountMaxValue}
           onChange={setHighlightCount}
+          isRow
+          inputClassName={styles.numInput}
         />
 
         {error && <p className={styles.formError}>{error}</p>}

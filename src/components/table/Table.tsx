@@ -15,7 +15,9 @@ const Table: React.FC = () => {
     handleAggregateCellHover,
     handleDataCellHover,
     handleDataCellLeave,
+    handleAddRow,
     handleDeleteRow,
+    incrementCellValue,
     cellsToHighlight,
   } = useTable();
 
@@ -40,7 +42,7 @@ const Table: React.FC = () => {
           rowIndex={rowIndex}
           rowSum={row.sum}
           isPercentDisplay={rowToHighlight === rowIndex}
-          handleIncrement={(rowIndex: number, colIndex: number) => {}}
+          handleIncrement={incrementCellValue}
           handleCellHover={handleDataCellHover}
           handleCellLeave={handleDataCellLeave}
           cellsToHighlight={cellsToHighlight}
@@ -49,7 +51,11 @@ const Table: React.FC = () => {
         />
       ))}
 
-      <TableFooter title={'60th percentile'} values={percentiles} />
+      <TableFooter
+        title={'60th percentile'}
+        values={percentiles}
+        onAddRow={handleAddRow}
+      />
     </div>
   );
 };

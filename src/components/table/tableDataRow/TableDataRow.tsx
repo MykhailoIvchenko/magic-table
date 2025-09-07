@@ -52,6 +52,7 @@ const TableDataRow: React.FC<ITableDataRowProps> = ({
           onHoverCell={handleCellHover}
           onLeaveCell={handleCellLeave}
           isClosest={cell.id in cellsToHighlight}
+          percentFromTotal={Number(((cell.amount / rowSum) * 100).toFixed(2))}
         />
       ))}
 

@@ -12,7 +12,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     highlightCount: 0,
   });
   const [tableHeaders, setTableHeaders] = useState<string[]>([]);
-  const [percentiles, setPercentiles] = useState<string[]>([]);
+  const [percentiles, setPercentiles] = useState<number[]>([]);
   const [tableData, setTableData] = useState<TableData>([]);
   const [rowToHighlight, setRowToHighlight] = useState(-1);
   const [cellsToHighlight, setCellsToHighlight] = useState<

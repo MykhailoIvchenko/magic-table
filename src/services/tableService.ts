@@ -3,7 +3,7 @@ import { randomNumberService } from './randomNumberService';
 import { statisticService } from './statisticService';
 
 class Table {
-  // public tableHeaders: Array<string>;
+  public tableHeaders: Array<string>;
   public percentiles: Array<number>;
   public tableData: Array<Array<ICellData>>;
   public rowsMaxValues: Record<number, number>;
@@ -12,7 +12,7 @@ class Table {
   public colsNumber: number;
 
   constructor() {
-    // this.tableHeaders = [];
+    this.tableHeaders = [];
     this.percentiles = [];
     this.tableData = [];
     this.rowsMaxValues = {};
@@ -188,6 +188,14 @@ class Table {
     }
 
     this.resetPercentilesRow();
+
+    this.tableHeaders = [''];
+
+    for (let i = 1; i <= cols; i++) {
+      this.tableHeaders.push(`Col${i}`);
+    }
+
+    this.tableHeaders.push('Sum');
   }
 
   public getNearestByValue(

@@ -3,6 +3,7 @@ import { useCallback, useContext } from 'react';
 
 function useTable() {
   const {
+    rowToHighlight,
     tableConfig,
     tableHeaders,
     percentiles,
@@ -75,9 +76,11 @@ function useTable() {
   }, []);
 
   return {
+    tableConfig,
     tableHeaders,
     tableData,
     percentiles,
+    rowToHighlight,
     incrementCellValue,
     handleDataCellHover,
     handleAggregateCellHover,

@@ -15,6 +15,8 @@ const TableFooter: React.FC<TableFooterProps> = ({ title, values }) => {
       {values.map((val, i) => (
         <FooterCell key={i} value={val} isFirstCol={i === 0} />
       ))}
+
+      <div>Add</div>
     </>
   );
 };

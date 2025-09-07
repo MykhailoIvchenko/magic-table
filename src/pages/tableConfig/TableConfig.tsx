@@ -44,6 +44,7 @@ const TableConfig: React.FC = () => {
     }
 
     if (setTableConfig) {
+      console.log('SET ', rowsNumber, colsNumber, highlightCount)
       setTableConfig({
         dataRowsNumber: rowsNumber,
         dataColumnsNumber: colsNumber,

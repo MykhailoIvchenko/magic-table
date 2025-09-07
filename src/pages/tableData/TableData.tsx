@@ -3,19 +3,22 @@ import styles from './tableData.module.css';
 import Title from '@/components/ui/title/Title';
 import useGenerateTable from '@/hooks/useGenerateTable';
 import Loader from '@/components/ui/loader/Loader';
-import { Suspense } from 'react';
+import { useEffect } from 'react';
+import { tableService } from '@/services/tableService';
 
 const TableData: React.FC = () => {
-  useGenerateTable();
+  const { isLoading } = useGenerateTable();
+
+  useEffect(() => {
+    return () => tableService.clearAllData();
+  }, []);
 
   return (
     <section className={styles.container}>
       <Title>Table Data</Title>
 
       <div className={styles.tableContainer}>
-        <Suspense fallback={<Loader />}>
-          <Table />
-        </Suspense>
+        {isLoading ? <Loader /> : <Table />}
       </div>
     </section>
   );

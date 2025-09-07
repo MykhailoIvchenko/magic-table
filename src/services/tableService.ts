@@ -144,9 +144,12 @@ class Table {
   }
 
   public addRow() {
-    const newRow = this.createRow(this.tableData.length);
+    const newRowIndex = this.tableData.length;
+    const newRow = this.createRow(newRowIndex);
 
     this.tableData.push(newRow);
+
+    newRow.forEach((_, curCol) => this.resetCellPercent(newRowIndex, curCol));
 
     this.resetPercentilesRow();
   }
@@ -250,6 +253,15 @@ class Table {
     }));
 
     return tableData;
+  }
+
+  public clearAllData() {
+    this.tableHeaders = [];
+    this.percentiles = [];
+    this.tableData = [];
+    this.rowsMaxValues = {};
+    this.rowsSums = {};
+    this.colsNumber = 0;
   }
 }
 

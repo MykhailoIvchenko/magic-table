@@ -53,7 +53,11 @@ const Table: React.FC = () => {
 
       <TableFooter
         title={'60th percentile'}
-        values={percentiles}
+        values={
+          percentiles?.length > 0
+            ? percentiles
+            : Array(tableConfig.dataColumnsNumber).fill(0)
+        }
         onAddRow={handleAddRow}
       />
     </div>

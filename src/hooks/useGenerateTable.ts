@@ -6,10 +6,9 @@ function useGenerateTable() {
   const { tableConfig, setTableHeaders, setTableData, setPercentiles } =
     useContext(AppContext);
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const generateTable = (rows: number, cols: number) => {
-    setIsLoading(true);
     tableService.generateTable(rows, cols);
 
     if (setTableHeaders) {
@@ -26,7 +25,9 @@ function useGenerateTable() {
       setTableData(tableData);
     }
 
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
   };
 
   useEffect(() => {

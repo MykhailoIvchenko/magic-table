@@ -3,15 +3,12 @@ import styles from './tableData.module.css';
 import Title from '@/components/ui/title/Title';
 import useGenerateTable from '@/hooks/useGenerateTable';
 import Loader from '@/components/ui/loader/Loader';
-import { useEffect } from 'react';
-import { tableService } from '@/services/tableService';
+import usePageLeaveConfirmation from '@/hooks/usePageLeaveConfirmtaion';
 
 const TableData: React.FC = () => {
   const { isLoading } = useGenerateTable();
 
-  useEffect(() => {
-    return () => tableService.clearAllData();
-  }, []);
+  usePageLeaveConfirmation();
 
   return (
     <section className={styles.container}>

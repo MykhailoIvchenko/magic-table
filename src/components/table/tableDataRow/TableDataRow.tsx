@@ -31,7 +31,13 @@ const TableDataRow: React.FC<ITableDataRowProps> = ({
 }) => {
   return (
     <>
-      {typeof title === 'string' && <RowTitleCell text={title} />}
+      {typeof title === 'string' && (
+        <RowTitleCell
+          text={title}
+          onDeleteRow={onDeleteRow}
+          rowIndex={rowIndex}
+        />
+      )}
 
       {dataCells.map((cell, colIndex) => (
         <DataCell
@@ -46,6 +52,7 @@ const TableDataRow: React.FC<ITableDataRowProps> = ({
           onHoverCell={handleCellHover}
           onLeaveCell={handleCellLeave}
           isClosest={cell.id in cellsToHighlight}
+          percentFromTotal={Number(((cell.amount / rowSum) * 100).toFixed(2))}
         />
       ))}
 
@@ -53,7 +60,6 @@ const TableDataRow: React.FC<ITableDataRowProps> = ({
         value={rowSum}
         rowIndex={rowIndex}
         onHoverRow={onHoverRow}
-        onDeleteRow={onDeleteRow}
       />
     </>
   );

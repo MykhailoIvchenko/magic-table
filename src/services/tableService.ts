@@ -1,3 +1,4 @@
+import { PERCENTILE_LIMIT } from '@/utils/consts';
 import { idGeneratorService } from './idGeneratorService';
 import { randomNumberService } from './randomNumberService';
 import { statisticService } from './statisticService';
@@ -17,7 +18,7 @@ class Table {
     this.tableData = [];
     this.rowsMaxValues = {};
     this.rowsSums = {};
-    this.percentileLimit = 60;
+    this.percentileLimit = PERCENTILE_LIMIT;
     this.colsNumber = 0;
   }
 
@@ -175,8 +176,8 @@ class Table {
 
       const currentRow = this.tableData[rowIndex];
 
-      currentRow.forEach(
-        (_, curCol) => this.resetCellPercent(rowIndex, curCol) //TODO: Make a method that accepts a cell
+      currentRow.forEach((_, curCol) =>
+        this.resetCellPercent(rowIndex, curCol)
       );
     } else {
       this.resetCellPercent(rowIndex, colIndex);
@@ -191,9 +192,7 @@ class Table {
 
       this.tableData.push(row);
 
-      row.forEach(
-        (_, curCol) => this.resetCellPercent(i, curCol) //TODO: Make a method that accepts a cell
-      );
+      row.forEach((_, curCol) => this.resetCellPercent(i, curCol));
     }
 
     this.resetPercentilesRow();

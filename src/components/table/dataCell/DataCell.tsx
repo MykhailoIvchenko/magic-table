@@ -5,7 +5,8 @@ import styles from './dataCell.module.css';
 
 interface DataCellProps {
   value: number;
-  percent?: number;
+  percent: number;
+  percentFromTotal: number;
   rowIndex: number;
   colIndex: number;
   isPercentDisplay: boolean;
@@ -20,6 +21,7 @@ interface DataCellProps {
 const DataCell: React.FC<DataCellProps> = ({
   value,
   percent,
+  percentFromTotal,
   rowIndex,
   colIndex,
   isClosest,
@@ -74,7 +76,7 @@ const DataCell: React.FC<DataCellProps> = ({
         onMouseLeave={onLeaveCell}
       >
         {isPercentDisplay ? (
-          <>{percent}%</>
+          <>{percentFromTotal}%</>
         ) : (
           <Button
             variant={'transparent'}

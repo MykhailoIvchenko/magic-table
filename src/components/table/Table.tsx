@@ -4,6 +4,7 @@ import TableDataRow from './tableDataRow/TableDataRow';
 import TableFooter from './tableFooter/TableFooter';
 import TableHeader from './tableHeader/TableHeader';
 import useTable from '@/hooks/useTable';
+import { PERCENTILE_LIMIT } from '@/utils/consts';
 
 const Table: React.FC = () => {
   const {
@@ -52,7 +53,7 @@ const Table: React.FC = () => {
       ))}
 
       <TableFooter
-        title={'60th percentile'}
+        title={`${PERCENTILE_LIMIT}th percentile`}
         values={
           percentiles?.length > 0
             ? percentiles

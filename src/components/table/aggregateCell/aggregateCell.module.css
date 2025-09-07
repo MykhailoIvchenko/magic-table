@@ -2,20 +2,7 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-text-accent);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: var(--gap-xs);
-}
-
-.deleteButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-primvary);
-  display: flex;
-  align-items: center;
-}
-
-.deleteButton:hover {
-  color: var(--color-danger);
 }

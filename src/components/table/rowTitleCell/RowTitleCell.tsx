@@ -15,7 +15,7 @@ const RowTitleCell: React.FC<IRowTitleCellProps> = ({
   onDeleteRow,
 }) => {
   return (
-    <TableCell isFirstCol>
+    <TableCell isFirstCol isExpanded>
       <div className={styles.rowTitleCell}>
         <strong className={styles.rowTitleCellText}>{text}</strong>
 

@@ -13,8 +13,8 @@
   border-right: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 50px;
+  min-height: 50px;
   box-sizing: border-box;
 }
 
@@ -24,4 +24,8 @@
 
 .cell-first-col {
   border-left: 1px solid var(--color-border);
+}
+
+.cell.cell-expanded {
+  min-width: 100px;
 }

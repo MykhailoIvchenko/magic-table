@@ -16,7 +16,7 @@ const TableFooter: React.FC<TableFooterProps> = ({
 }) => {
   return (
     <>
-      {typeof title === 'string' && <RowTitleCell text={title} />}
+      {typeof title === 'string' && <RowTitleCell text={title} rowIndex={-1} />}
 
       {values.map((val, i) => (
         <FooterCell

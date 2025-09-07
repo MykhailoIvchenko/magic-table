@@ -5,8 +5,8 @@ import styles from './rowTitleCell.module.css';
 
 interface IRowTitleCellProps {
   text: string;
-  onDeleteRow?: (rowIndex: number) => void;
   rowIndex: number;
+  onDeleteRow?: (rowIndex: number) => void;
 }
 
 const RowTitleCell: React.FC<IRowTitleCellProps> = ({
@@ -18,6 +18,7 @@ const RowTitleCell: React.FC<IRowTitleCellProps> = ({
     <TableCell isFirstCol>
       <div className={styles.rowTitleCell}>
         <strong className={styles.rowTitleCellText}>{text}</strong>
+
         {onDeleteRow && (
           <Button
             className={styles.deleteButton}

@@ -1,0 +1,8 @@
+.aggregateCell {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--gap-xs);
+}

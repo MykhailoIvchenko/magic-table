@@ -2,7 +2,6 @@
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
-  cursor: pointer;
 }
 
 ::-webkit-scrollbar-track {
@@ -14,7 +13,6 @@
   background-color: var(--color-bg-hover);
   border-radius: var(--radius-sm);
   border: 2px solid var(--color-bg-muted);
-  cursor: pointer;
 }
 
 ::-webkit-scrollbar-thumb:hover {

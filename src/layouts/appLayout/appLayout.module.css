@@ -2,7 +2,7 @@
   width: 100vw;
   min-height: 100vh;
   height: 100vh;
-  padding: var(--gap-lg) 0;
+  padding: var(--gap-lg);
   background-color: var(--color-bg-main);
   overflow: hidden;
 }

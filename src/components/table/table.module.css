@@ -1,8 +1,9 @@
 .table {
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(
     var(--table-columns-number),
     fit-content(100px)
   );
-  margin: 0 auto;
+  width: max-content;
 }

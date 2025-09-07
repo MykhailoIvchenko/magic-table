@@ -1,7 +1,7 @@
 import TableCell from '@/components/table/tableCell/TableCell';
 import TrashIcon from '@/assets/img/icons/trash-icon.svg?react';
-import styles from './rowTitleCell.module.css';
 import Button from '@/components/ui/button/Button';
+import styles from './rowTitleCell.module.css';
 
 interface IRowTitleCellProps {
   text: string;

@@ -8,6 +8,7 @@
   height: 100%;
   padding: var(--gap-xs);
   background-color: var(--color-muted);
+  min-width: 100px;
 }
 
 .deleteButton {

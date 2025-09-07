@@ -35,7 +35,7 @@ It implements an interactive table with dynamic calculations, highlighting, and 
 - **React 19** + **TypeScript**
 - **Vite** (development/build)
 - **React Context API** (state management)
-- **CSS Modules** for stylingcss-in-js\*\*
+- **CSS Modules** for styling
 
 ---
 

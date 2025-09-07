@@ -62,15 +62,19 @@ function useTable() {
   }, []);
 
   const handleDeleteRow = useCallback((rowIndex: number) => {
-    const updatedTableData = []; //TODO: Get it from the service
-    const updatedPercentiles = [[]]; //TODO: Get it from the service
+    tableService.deleteRow(rowIndex);
 
     if (setTableData) {
-      setTableData(updatedTableData);
+      const tableData = tableService.tableData.map((rowData, rowIndex) => ({
+        title: `Row${rowIndex + 1}`,
+        data: rowData,
+        sum: tableService.rowsSums[rowIndex],
+      }));
+      setTableData(tableData);
     }
 
     if (setPercentiles) {
-      setPercentiles(updatedPercentiles);
+      setPercentiles(tableService.percentiles);
     }
   }, []);
 

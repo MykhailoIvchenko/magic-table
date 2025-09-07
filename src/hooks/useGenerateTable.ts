@@ -20,6 +20,7 @@ function useGenerateTable() {
       setPercentiles(tableService.percentiles);
     }
 
+    //TODO: Create a function for convertion and use in all places
     const tableData = tableService.tableData.map((rowData, rowIndex) => ({
       title: `Row${rowIndex + 1}`,
       data: rowData,

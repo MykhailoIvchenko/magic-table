@@ -15,6 +15,7 @@ const Table: React.FC = () => {
     handleAggregateCellHover,
     handleDataCellHover,
     handleDataCellLeave,
+    handleDeleteRow,
     cellsToHighlight,
   } = useTable();
 
@@ -44,6 +45,7 @@ const Table: React.FC = () => {
           handleCellLeave={handleDataCellLeave}
           cellsToHighlight={cellsToHighlight}
           onHoverRow={handleAggregateCellHover}
+          onDeleteRow={handleDeleteRow}
         />
       ))}
 

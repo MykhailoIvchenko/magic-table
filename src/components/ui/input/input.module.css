@@ -37,7 +37,7 @@
 }
 
 .input:disabled {
-  background-color: var(--color-disabled);
+  background-color: var(--color-bg-secondary);
   color: var(--color-text-disabled);
   cursor: not-allowed;
 }

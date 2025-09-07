@@ -1,69 +1,79 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite — Interactive Table
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a **React + TypeScript** application bootstrapped with **Vite**.  
+It implements an interactive table with dynamic calculations, highlighting, and row management features.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- **Matrix generation**:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  - Creates an `M x N` table with random 3-digit numbers in each cell.
+  - `M` – number of rows (`0–100`)
+  - `N` – number of columns (`0–100`)
+  - `X` – number of nearest cells to highlight (validated based on matrix size).
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Table view**:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+  - Each row displays generated cell values.
+  - An additional **Sum column** shows row totals.
+  - An additional **60th percentile row** shows column statistics.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Interactions**:
+  - **Increment cell**: click to increase a cell’s value by `+1`, automatically updating sums and percentiles.
+  - **Nearest cells highlight**: hover over a cell → highlights `X` nearest values across the table.
+  - **Row percentage mode**: hover over a row’s Sum cell → each value is replaced with its % of the row total, with a **heatmap background** (based on % of max in the row).
+  - **Row management**:
+    - Remove any row (table updates automatically).
+    - Add a new row at the end.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React 19** + **TypeScript**
+- **Vite** (development/build)
+- **React Context API** (state management)
+- **CSS Modules** for stylingcss-in-js\*\*
+
+---
+
+## 📦 Installation & Usage
+
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/MykhailoIvchenko/magic-table.git
+cd magic-table
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+### Deployment
+
+The app is deployed to **GitHub Pages**
+
+## 📖 Summary
+
+This project provides an interactive table with:
+
+- random number generation,
+- dynamic calculations,
+- interactive cell operations,
+- row add/remove,
+- highlighting and heatmaps.
+
+Deployed build is available at: **[Live Demo Link](https://MykhailoIvchenko.github.io/magic-table/)**
